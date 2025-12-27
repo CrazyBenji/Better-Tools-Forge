@@ -30,6 +30,5 @@
     "recipes": [
       "bettertools:bedrock_smasher"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

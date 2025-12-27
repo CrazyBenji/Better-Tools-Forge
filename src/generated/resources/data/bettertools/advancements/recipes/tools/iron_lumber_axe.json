@@ -30,6 +30,5 @@
     "recipes": [
       "bettertools:iron_lumber_axe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

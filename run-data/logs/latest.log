@@ -1,32 +1,28 @@
-[27Dec2025 15:23:44.918] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 8, --assetsDir, C:\Users\benla\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 48.1.0, --fml.mcVersion, 1.20.2, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230921.100330, --mod, bettertools, --all, --output, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\generated\resources, --existing, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\main\resources]
-[27Dec2025 15:23:44.920] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 17.0.17+10
-[27Dec2025 15:23:44.921] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.1.1 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
-[27Dec2025 15:23:45.043] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[27Dec2025 15:23:45.107] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/benla/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23127!/ Service=ModLauncher Env=UNKNOWN
-[27Dec2025 15:23:45.393] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\benla\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.2-48.1.0\7a8d252b70bac3cde4ec0e82bd816fe0212551d\fmlcore-1.20.2-48.1.0.jar is missing mods.toml file
-[27Dec2025 15:23:45.396] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\benla\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.2-48.1.0\d034c6f69f1f1cf324bdd7bbc66896e67990bbef\javafmllanguage-1.20.2-48.1.0.jar is missing mods.toml file
-[27Dec2025 15:23:45.398] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\benla\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.2-48.1.0\ac35e86aee5633ea200ae1607b4ca48b24cd845\lowcodelanguage-1.20.2-48.1.0.jar is missing mods.toml file
-[27Dec2025 15:23:45.400] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\benla\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.2-48.1.0\7ddb9ee7a72eb906db86ca9490f35be1789c2813\mclanguage-1.20.2-48.1.0.jar is missing mods.toml file
-[27Dec2025 15:23:45.525] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[27Dec2025 15:23:46.731] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\benla\.gradle\caches\forge_gradle\assets, --assetIndex, 8, --mod, bettertools, --all, --output, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\generated\resources, --existing, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\main\resources]
-[27Dec2025 15:23:51.247] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 48.1.0, for MC 1.20.2 with MCP 20230921.100330
-[27Dec2025 15:23:51.251] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v48.1.0 Initialized
-[27Dec2025 15:23:51.787] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [bettertools]
-[27Dec2025 15:23:51.856] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/benla/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.2-48.1.0_mapped_official_1.20.2/forge-1.20.2-48.1.0_mapped_official_1.20.2-recomp.jar%23188!/assets/.mcassetsroot' uses unexpected schema
-[27Dec2025 15:23:51.857] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/benla/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.2-48.1.0_mapped_official_1.20.2/forge-1.20.2-48.1.0_mapped_official_1.20.2-recomp.jar%23188!/data/.mcassetsroot' uses unexpected schema
-[27Dec2025 15:23:52.136] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
-[27Dec2025 15:23:52.236] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 98 ms
-[27Dec2025 15:23:52.236] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : bettertools
-[27Dec2025 15:23:52.256] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : bettertools finished after 20 ms
-[27Dec2025 15:23:52.257] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
-[27Dec2025 15:23:52.273] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 15 ms
-[27Dec2025 15:23:52.273] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id bettertools
-[27Dec2025 15:23:52.294] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id bettertools finished after 20 ms
-[27Dec2025 15:23:52.294] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id bettertools
-[27Dec2025 15:23:52.295] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id bettertools finished after 1 ms
-[27Dec2025 15:23:52.295] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: bettertools
-[27Dec2025 15:23:52.307] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: bettertools finished after 12 ms
-[27Dec2025 15:23:52.308] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: bettertools
-[27Dec2025 15:23:52.373] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: bettertools finished after 65 ms
-[27Dec2025 15:23:52.373] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 238 ms
-[27Dec2025 15:23:52.385] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 109, old count: 109, new count: 110, removed stale: 0, written: 18
+[27Dec2025 16:15:18.019] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 12, --assetsDir, C:\Users\benla\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, bettertools, --all, --output, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\generated\resources, --existing, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\main\resources]
+[27Dec2025 16:15:18.023] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 17.0.17+10
+[27Dec2025 16:15:18.025] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.1.2 starting: java version 17.0.17 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[27Dec2025 16:15:18.224] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[27Dec2025 16:15:18.400] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=jar:file:///C:/Users/benla/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar!/ Service=ModLauncher Env=UNKNOWN
+[27Dec2025 16:15:19.071] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[27Dec2025 16:15:20.240] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\benla\.gradle\caches\forge_gradle\assets, --assetIndex, 12, --mod, bettertools, --all, --output, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\generated\resources, --existing, C:\Users\benla\Minecraft Modding\Better Tools Forge\src\main\resources]
+[27Dec2025 16:15:24.706] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 49.0.2, for MC 1.20.3 with MCP 20231205.124940
+[27Dec2025 16:15:24.709] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v49.0.2 Initialized
+[27Dec2025 16:15:25.111] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [bettertools]
+[27Dec2025 16:15:25.177] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/benla/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.3-49.0.2_mapped_official_1.20.3/forge-1.20.3-49.0.2_mapped_official_1.20.3.jar%2316!/assets/.mcassetsroot' uses unexpected schema
+[27Dec2025 16:15:25.177] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/benla/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.3-49.0.2_mapped_official_1.20.3/forge-1.20.3-49.0.2_mapped_official_1.20.3.jar%2316!/data/.mcassetsroot' uses unexpected schema
+[27Dec2025 16:15:25.498] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[27Dec2025 16:15:25.584] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 84 ms
+[27Dec2025 16:15:25.584] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Global Loot Modifiers : bettertools
+[27Dec2025 16:15:25.601] [main/INFO] [net.minecraft.data.DataGenerator/]: Global Loot Modifiers : bettertools finished after 16 ms
+[27Dec2025 16:15:25.601] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Advancements
+[27Dec2025 16:15:25.619] [main/INFO] [net.minecraft.data.DataGenerator/]: Advancements finished after 17 ms
+[27Dec2025 16:15:25.619] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id bettertools
+[27Dec2025 16:15:25.632] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id bettertools finished after 12 ms
+[27Dec2025 16:15:25.632] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id bettertools
+[27Dec2025 16:15:25.634] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id bettertools finished after 2 ms
+[27Dec2025 16:15:25.635] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: bettertools
+[27Dec2025 16:15:25.652] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: bettertools finished after 17 ms
+[27Dec2025 16:15:25.653] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: bettertools
+[27Dec2025 16:15:25.737] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: bettertools finished after 84 ms
+[27Dec2025 16:15:25.738] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 239 ms
+[27Dec2025 16:15:25.746] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 109, old count: 109, new count: 110, removed stale: 0, written: 0
