@@ -47,15 +47,15 @@ public class BetterToolsModelProviderForge extends ItemModelProvider {
     public void generateFlatItem(RegistryObject<Item> item, ModelTemplate modelTemplate) {
         ResourceLocation parent;
         if (modelTemplate.equals(ModelTemplates.FLAT_HANDHELD_ITEM)) {
-            parent = new ResourceLocation("item/handheld");
+            parent = ResourceLocation.parse("item/handheld");
         }
         else {
-            parent = new ResourceLocation("item/generated");
+            parent = ResourceLocation.parse("item/generated");
         }
 
         assert item.getId() != null;
         withExistingParent(item.getId().getPath(),
                 parent)
-                .texture("layer0", new ResourceLocation(BetterToolsForge.MOD_ID, "item/" + item.getId().getPath()));
+                .texture("layer0", ResourceLocation.fromNamespaceAndPath(BetterToolsForge.MOD_ID, "item/" + item.getId().getPath()));
     }
 }

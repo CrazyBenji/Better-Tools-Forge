@@ -8,8 +8,6 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.function.Consumer;
-
 public class BetterToolsRecipeProviderForge extends RecipeProvider implements IConditionBuilder {
     public BetterToolsRecipeProviderForge(PackOutput output) {
         super(output);

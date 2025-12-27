@@ -27,7 +27,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
 
     public static class BetterToolsAdvancementGenerator implements AdvancementGenerator {
         public AdvancementHolder getAdvancement(String id) {
-            return Advancement.Builder.advancement().build(new ResourceLocation(id));
+            return Advancement.Builder.advancement().build(ResourceLocation.withDefaultNamespace(id));
         }
 
         @Override
