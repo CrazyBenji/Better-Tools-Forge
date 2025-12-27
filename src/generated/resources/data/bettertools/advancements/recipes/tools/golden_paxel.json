@@ -30,6 +30,5 @@
     "recipes": [
       "bettertools:golden_paxel"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

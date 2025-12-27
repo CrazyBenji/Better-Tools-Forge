@@ -15,7 +15,6 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.husbandry.get_netherite_scythe.description"
     },
@@ -25,7 +24,6 @@
       "item": "bettertools:netherite_scythe",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.husbandry.get_netherite_scythe.title"
     }

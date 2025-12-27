@@ -30,6 +30,5 @@
     "recipes": [
       "bettertools:iron_scythe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

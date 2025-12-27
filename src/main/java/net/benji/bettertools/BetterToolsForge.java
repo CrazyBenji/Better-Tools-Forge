@@ -7,6 +7,7 @@ import net.benji.bettertools.enchantment.BetterToolsEnchantments;
 import net.benji.bettertools.item.BetterToolsCreativeModeTabs;
 import net.benji.bettertools.item.BetterToolsItems;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -32,6 +33,8 @@ public class BetterToolsForge
         BetterToolsCreativeModeTabs.registerCreativeModeTabs(modEventBus);
         BetterToolsEnchantments.registerEnchantments(modEventBus);
         BetterToolsLootModifiers.registerLootModifiers(modEventBus);
+
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

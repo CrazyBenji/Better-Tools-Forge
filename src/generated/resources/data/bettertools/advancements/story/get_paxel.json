@@ -15,17 +15,13 @@
     }
   },
   "display": {
-    "announce_to_chat": true,
     "description": {
       "translate": "advancements.story.get_paxel.description"
     },
-    "frame": "task",
-    "hidden": false,
     "icon": {
       "item": "bettertools:iron_paxel",
       "nbt": "{Damage:0}"
     },
-    "show_toast": true,
     "title": {
       "translate": "advancements.story.get_paxel.title"
     }

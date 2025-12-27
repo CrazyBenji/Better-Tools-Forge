@@ -18,7 +18,7 @@ public class BetterToolsBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BetterToolsForge.MOD_ID);
 
     public static final RegistryObject<Block> SMASHED_BEDROCK = registerBlock("smashed_bedrock",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN)));
+            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)));
 
     public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

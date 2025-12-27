@@ -30,6 +30,5 @@
     "recipes": [
       "bettertools:golden_lumber_axe"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
