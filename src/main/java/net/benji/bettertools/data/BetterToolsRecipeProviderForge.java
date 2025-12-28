@@ -10,13 +10,14 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.function.Consumer;
 
 public class BetterToolsRecipeProviderForge extends RecipeProvider implements IConditionBuilder {
-    public BetterToolsRecipeProviderForge(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries);
+    public BetterToolsRecipeProviderForge(PackOutput output) {
+        super(output);
     }
 
-    public void generatePaxelRecipe(RecipeOutput recipeOutput, Item pickaxe, Item axe, Item shovel, Item output) {
+    public void generatePaxelRecipe(Consumer<FinishedRecipe> recipeOutput, Item pickaxe, Item axe, Item shovel, Item output) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1)
                 .pattern("abc")
                 .pattern(" s ")
@@ -29,7 +30,7 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
                 .save(recipeOutput);
     }
 
-    public void generateHammerRecipe(RecipeOutput recipeOutput, Item ingot, Item block, Item output) {
+    public void generateHammerRecipe(Consumer<FinishedRecipe> recipeOutput, Item ingot, Item block, Item output) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1)
                 .pattern("mbm")
                 .pattern("msm")
@@ -41,7 +42,7 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
                 .save(recipeOutput);
     }
 
-    public void generateSickleRecipe(RecipeOutput recipeOutput, Item ingot, Item output) {
+    public void generateSickleRecipe(Consumer<FinishedRecipe> recipeOutput, Item ingot, Item output) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1)
                 .pattern("mmm")
                 .pattern(" s ")
@@ -52,7 +53,7 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
                 .save(recipeOutput);
     }
 
-    public void generateLumberAxeRecipe(RecipeOutput recipeOutput, Item ingot, Item block, Item output) {
+    public void generateLumberAxeRecipe(Consumer<FinishedRecipe> recipeOutput, Item ingot, Item block, Item output) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1)
                 .pattern("ib")
                 .pattern("is")
@@ -65,7 +66,7 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
     }
 
     @Override
-    public void buildRecipes(@NotNull RecipeOutput recipeOutput) {
+    public void buildRecipes(@NotNull Consumer<FinishedRecipe> recipeOutput) {
         generateHammerRecipe(recipeOutput, Items.IRON_INGOT, Items.IRON_BLOCK, BetterToolsItems.IRON_HAMMER.get());
         generateHammerRecipe(recipeOutput, Items.GOLD_INGOT, Items.GOLD_BLOCK, BetterToolsItems.GOLDEN_HAMMER.get());
         generateHammerRecipe(recipeOutput, Items.DIAMOND, Items.DIAMOND_BLOCK, BetterToolsItems.DIAMOND_HAMMER.get());

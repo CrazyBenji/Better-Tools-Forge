@@ -3,9 +3,8 @@ package net.benji.bettertools.data;
 import net.benji.bettertools.BetterToolsForge;
 import net.benji.bettertools.item.BetterToolsItems;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -26,20 +25,20 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
     }
 
     public static class BetterToolsAdvancementGenerator implements AdvancementGenerator {
-        public AdvancementHolder getAdvancement(String id) {
+        public Advancement getAdvancement(String id) {
             return Advancement.Builder.advancement().build(ResourceLocation.withDefaultNamespace(id));
         }
 
         @Override
-        public void generate(HolderLookup.@NotNull Provider provider, @NotNull Consumer<AdvancementHolder> consumer, @NotNull ExistingFileHelper existingFileHelper) {
-            AdvancementHolder getHammer = Advancement.Builder.advancement()
+        public void generate(HolderLookup.@NotNull Provider provider, @NotNull Consumer<Advancement> consumer, @NotNull ExistingFileHelper existingFileHelper) {
+            Advancement getHammer = Advancement.Builder.advancement()
                     .parent(getAdvancement("story/iron_tools"))
                     .display(
                             BetterToolsItems.IRON_HAMMER.get(),
                             Component.translatable("advancements.story.get_hammer.title"),
                             Component.translatable("advancements.story.get_hammer.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -47,14 +46,14 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("hammer", InventoryChangeTrigger.TriggerInstance.hasItems(BetterToolsItems.IRON_HAMMER.get()))
                     .save(consumer, BetterToolsForge.MOD_ID + ":story/get_hammer");
 
-            AdvancementHolder getPaxel = Advancement.Builder.advancement()
+            Advancement getPaxel = Advancement.Builder.advancement()
                     .parent(getAdvancement("story/iron_tools"))
                     .display(
                             BetterToolsItems.IRON_PAXEL.get(),
                             Component.translatable("advancements.story.get_paxel.title"),
                             Component.translatable("advancements.story.get_paxel.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -62,14 +61,14 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("got_paxel", InventoryChangeTrigger.TriggerInstance.hasItems(BetterToolsItems.IRON_PAXEL.get()))
                     .save(consumer, BetterToolsForge.MOD_ID + ":story/get_paxel");
 
-            AdvancementHolder getScythe = Advancement.Builder.advancement()
+            Advancement getScythe = Advancement.Builder.advancement()
                     .parent(getAdvancement("story/iron_tools"))
                     .display(
                             BetterToolsItems.IRON_SCYTHE.get(),
                             Component.translatable("advancements.story.get_scythe.title"),
                             Component.translatable("advancements.story.get_scythe.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -77,14 +76,14 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("got_scythe", InventoryChangeTrigger.TriggerInstance.hasItems(BetterToolsItems.IRON_SCYTHE.get()))
                     .save(consumer, BetterToolsForge.MOD_ID + ":story/get_scythe");
 
-            AdvancementHolder getNetheriteScythe = Advancement.Builder.advancement()
+            Advancement getNetheriteScythe = Advancement.Builder.advancement()
                     .parent(getAdvancement("husbandry/obtain_netherite_hoe"))
                     .display(
                             BetterToolsItems.NETHERITE_SCYTHE.get(),
                             Component.translatable("advancements.husbandry.get_netherite_scythe.title"),
                             Component.translatable("advancements.husbandry.get_netherite_scythe.description"),
                             null,
-                            AdvancementType.CHALLENGE,
+                            FrameType.CHALLENGE,
                             true,
                             true,
                             true
@@ -95,13 +94,13 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("got_netherite_scythe", InventoryChangeTrigger.TriggerInstance.hasItems(BetterToolsItems.NETHERITE_SCYTHE.get()))
                     .save(consumer, BetterToolsForge.MOD_ID + ":husbandry/get_netherite_scythe");
 
-            AdvancementHolder getGlassChipper = Advancement.Builder.advancement()
+            Advancement getGlassChipper = Advancement.Builder.advancement()
                     .parent(getAdvancement("story/iron_tools"))
                     .display(BetterToolsItems.GLASS_CHIPPER.get(),
                             Component.translatable("advancements.story.get_glass_chipper.title"),
                             Component.translatable("advancements.story.get_glass_chipper.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -109,13 +108,13 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("got_glass_chipper", InventoryChangeTrigger.TriggerInstance.hasItems(BetterToolsItems.GLASS_CHIPPER.get()))
                     .save(consumer, BetterToolsForge.MOD_ID + ":story/get_glass_chipper");
 
-            AdvancementHolder getBedrockSmasher = Advancement.Builder.advancement()
+            Advancement getBedrockSmasher = Advancement.Builder.advancement()
                     .parent(getAdvancement("nether/summon_wither"))
                     .display(BetterToolsItems.BEDROCK_SMASHER.get(),
                             Component.translatable("advancements.nether.get_bedrock_smasher.title"),
                             Component.translatable("advancements.nether.get_bedrock_smasher.description"),
                             null,
-                            AdvancementType.CHALLENGE,
+                            FrameType.CHALLENGE,
                             true,
                             true,
                             true
@@ -123,13 +122,13 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("got_bedrock_smasher", InventoryChangeTrigger.TriggerInstance.hasItems(BetterToolsItems.BEDROCK_SMASHER.get()))
                     .save(consumer, BetterToolsForge.MOD_ID + ":nether/get_bedrock_smasher");
 
-            AdvancementHolder getLumberAxe = Advancement.Builder.advancement()
+            Advancement getLumberAxe = Advancement.Builder.advancement()
                     .parent(getAdvancement("story/iron_tools"))
                     .display(BetterToolsItems.IRON_LUMBER_AXE.get(),
                             Component.translatable("advancements.story.get_lumber_axe.title"),
                             Component.translatable("advancements.story.get_lumber_axe.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false

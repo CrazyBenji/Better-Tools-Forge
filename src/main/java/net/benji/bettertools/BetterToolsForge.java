@@ -21,16 +21,17 @@ import org.slf4j.Logger;
 public class BetterToolsForge
 {
     public static final String MOD_ID = "bettertools";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
-    public BetterToolsForge() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public BetterToolsForge(FMLJavaModLoadingContext loadingContext) {
+        IEventBus modEventBus = loadingContext.getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
 
         BetterToolsBlocks.registerBlocks(modEventBus);
         BetterToolsItems.registerItems(modEventBus);
         BetterToolsCreativeModeTabs.registerCreativeModeTabs(modEventBus);
+        BetterToolsEnchantments.registerEnchantment(modEventBus);
         BetterToolsLootModifiers.registerLootModifiers(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);

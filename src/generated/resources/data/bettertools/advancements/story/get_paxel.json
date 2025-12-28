@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "got_paxel": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bettertools:iron_paxel"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.story.get_paxel.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bettertools:iron_paxel",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.story.get_paxel.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_paxel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

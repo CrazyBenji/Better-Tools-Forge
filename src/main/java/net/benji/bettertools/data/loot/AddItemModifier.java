@@ -1,6 +1,7 @@
 package net.benji.bettertools.data.loot;
 
-import com.mojang.serialization.MapCodec;
+import com.google.common.base.Suppliers;
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -12,10 +13,12 @@ import net.minecraftforge.common.loot.IGlobalLootModifier;
 import net.minecraftforge.common.loot.LootModifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 public class AddItemModifier extends LootModifier {
-    public static final MapCodec<AddItemModifier> CODEC = RecordCodecBuilder.mapCodec(inst ->
-            LootModifier.codecStart(inst).and(
-                    BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(e -> e.item)).apply(inst, AddItemModifier::new));
+    public static final Supplier<Codec<AddItemModifier>> CODEC = Suppliers.memoize(
+            () -> RecordCodecBuilder.create((inst -> codecStart(inst).and(
+                    BuiltInRegistries.ITEM.byNameCodec().fieldOf("item").forGetter(e -> e.item)).apply(inst, AddItemModifier::new))));
     private final Item item;
 
     public AddItemModifier(LootItemCondition[] conditionsIn, Item item) {
@@ -37,7 +40,7 @@ public class AddItemModifier extends LootModifier {
     }
 
     @Override
-    public MapCodec<? extends IGlobalLootModifier> codec() {
-        return CODEC;
+    public @NotNull Codec<? extends IGlobalLootModifier> codec() {
+        return CODEC.get();
     }
 }
