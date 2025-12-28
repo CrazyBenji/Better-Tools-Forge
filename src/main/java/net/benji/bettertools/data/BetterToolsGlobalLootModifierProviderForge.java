@@ -12,6 +12,7 @@ import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePrope
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -60,7 +61,7 @@ public class BetterToolsGlobalLootModifierProviderForge extends GlobalLootModifi
     }
 
     @Override
-    protected void start() {
+    protected void start(HolderLookup.@NotNull Provider provider) {
         for (Block b : GLASS_BLOCKS) {
             this.addGlassChipperDrop(b);
         }

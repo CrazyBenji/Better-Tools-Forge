@@ -23,15 +23,14 @@ public class BetterToolsForge
     public static final String MOD_ID = "bettertools";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public BetterToolsForge(FMLJavaModLoadingContext loadingContext) {
-        IEventBus modEventBus = loadingContext.getModEventBus();
+    public BetterToolsForge() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
 
         BetterToolsBlocks.registerBlocks(modEventBus);
         BetterToolsItems.registerItems(modEventBus);
         BetterToolsCreativeModeTabs.registerCreativeModeTabs(modEventBus);
-        BetterToolsEnchantments.registerEnchantments(modEventBus);
         BetterToolsLootModifiers.registerLootModifiers(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
