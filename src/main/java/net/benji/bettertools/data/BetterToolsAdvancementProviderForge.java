@@ -5,7 +5,7 @@ import net.benji.bettertools.item.BetterToolsItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRewards;
-import net.minecraft.advancements.AdvancementType;
+import net.minecraft.advancements.FrameType;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -27,7 +27,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
 
     public static class BetterToolsAdvancementGenerator implements AdvancementGenerator {
         public AdvancementHolder getAdvancement(String id) {
-            return Advancement.Builder.advancement().build(ResourceLocation.withDefaultNamespace(id));
+            return Advancement.Builder.advancement().build(new ResourceLocation(id));
         }
 
         @Override
@@ -39,7 +39,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.story.get_hammer.title"),
                             Component.translatable("advancements.story.get_hammer.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -54,7 +54,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.story.get_paxel.title"),
                             Component.translatable("advancements.story.get_paxel.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -69,7 +69,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.story.get_scythe.title"),
                             Component.translatable("advancements.story.get_scythe.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -84,7 +84,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.husbandry.get_netherite_scythe.title"),
                             Component.translatable("advancements.husbandry.get_netherite_scythe.description"),
                             null,
-                            AdvancementType.CHALLENGE,
+                            FrameType.CHALLENGE,
                             true,
                             true,
                             true
@@ -101,7 +101,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.story.get_glass_chipper.title"),
                             Component.translatable("advancements.story.get_glass_chipper.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false
@@ -115,7 +115,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.nether.get_bedrock_smasher.title"),
                             Component.translatable("advancements.nether.get_bedrock_smasher.description"),
                             null,
-                            AdvancementType.CHALLENGE,
+                            FrameType.CHALLENGE,
                             true,
                             true,
                             true
@@ -129,7 +129,7 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                             Component.translatable("advancements.story.get_lumber_axe.title"),
                             Component.translatable("advancements.story.get_lumber_axe.description"),
                             null,
-                            AdvancementType.TASK,
+                            FrameType.TASK,
                             true,
                             true,
                             false

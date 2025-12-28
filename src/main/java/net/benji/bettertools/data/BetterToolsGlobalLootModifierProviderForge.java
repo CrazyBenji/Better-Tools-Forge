@@ -56,12 +56,12 @@ public class BetterToolsGlobalLootModifierProviderForge extends GlobalLootModifi
             Blocks.PINK_STAINED_GLASS_PANE
     );
 
-    public BetterToolsGlobalLootModifierProviderForge(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, BetterToolsForge.MOD_ID, registries);
+    public BetterToolsGlobalLootModifierProviderForge(PackOutput output) {
+        super(output, BetterToolsForge.MOD_ID);
     }
 
     @Override
-    protected void start(HolderLookup.@NotNull Provider provider) {
+    protected void start() {
         for (Block b : GLASS_BLOCKS) {
             this.addGlassChipperDrop(b);
         }

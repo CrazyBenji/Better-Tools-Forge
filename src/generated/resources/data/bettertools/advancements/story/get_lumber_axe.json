@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "got_lumber_axe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bettertools:iron_lumber_axe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.story.get_lumber_axe.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bettertools:iron_lumber_axe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.story.get_lumber_axe.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_lumber_axe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

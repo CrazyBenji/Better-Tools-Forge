@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:story/iron_tools",
+  "criteria": {
+    "got_scythe": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "bettertools:iron_scythe"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.story.get_scythe.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "bettertools:iron_scythe",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.story.get_scythe.title"
+    }
+  },
+  "requirements": [
+    [
+      "got_scythe"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,39 +1,27 @@
 package net.benji.bettertools.enchantment;
 
 import net.benji.bettertools.BetterToolsForge;
-import net.benji.bettertools.util.BetterToolsTags;
+import net.benji.bettertools.enchantment.custom.ReapingEnchantment;
+import net.benji.bettertools.item.custom.ScytheItem;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.data.worldgen.BootstrapContext;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.EnchantmentTags;
-import net.minecraft.world.entity.EquipmentSlotGroup;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
-import net.minecraft.world.item.enchantment.LevelBasedValue;
-import net.minecraft.world.item.enchantment.effects.AddValue;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 public class BetterToolsEnchantments {
-    public static final ResourceKey<Enchantment> REAPING =
-            ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(BetterToolsForge.MOD_ID, "reaping"));
+    public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister.create(Registries.ENCHANTMENT, BetterToolsForge.MOD_ID);
 
-    public static void bootstrap(BootstrapContext<Enchantment> registerable) {
-        var enchantments = registerable.lookup(Registries.ENCHANTMENT);
-        var items = registerable.lookup(Registries.ITEM);
+    public static final EnchantmentCategory SCYTHES = EnchantmentCategory.create("scythes", item -> item instanceof ScytheItem);
 
-        register(registerable, REAPING, Enchantment.enchantment(Enchantment.definition(
-                        items.getOrThrow(BetterToolsTags.Items.SCYTHES),
-                        5,
-                        4,
-                        Enchantment.dynamicCost(10, 8),
-                        Enchantment.dynamicCost(18, 8),
-                        1,
-                        EquipmentSlotGroup.MAINHAND))
-                .exclusiveWith(enchantments.getOrThrow(EnchantmentTags.DAMAGE_EXCLUSIVE))
-                .withEffect(EnchantmentEffectComponents.DAMAGE, new AddValue(LevelBasedValue.perLevel(1.5f))));
-    }
+    public static final RegistryObject<Enchantment> REAPING = ENCHANTMENTS.register(
+            "reaping",
+            () -> new ReapingEnchantment(Enchantment.Rarity.VERY_RARE, SCYTHES, EquipmentSlot.MAINHAND)
+    );
 
-    private static void register(BootstrapContext<Enchantment> registry, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
-        registry.register(key, builder.build(key.location()));
+    public static void registerEnchantment(IEventBus modEventBus) {
+        ENCHANTMENTS.register(modEventBus);
     }
 }

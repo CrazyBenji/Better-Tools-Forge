@@ -31,6 +31,7 @@ public class BetterToolsForge
         BetterToolsBlocks.registerBlocks(modEventBus);
         BetterToolsItems.registerItems(modEventBus);
         BetterToolsCreativeModeTabs.registerCreativeModeTabs(modEventBus);
+        BetterToolsEnchantments.registerEnchantment(modEventBus);
         BetterToolsLootModifiers.registerLootModifiers(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);

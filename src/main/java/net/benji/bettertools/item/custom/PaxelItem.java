@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
@@ -21,6 +20,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.List;
@@ -30,7 +30,7 @@ public class PaxelItem extends DiggerItem {
     public static final Component DESC = Component.translatable("desc.bettertools.paxel").withStyle(ChatFormatting.BLUE);
 
     public PaxelItem(Tier tier, float attackDamageModifier, float attackSpeedModifier, Properties properties) {
-        super(tier, BetterToolsTags.Blocks.PAXEL_MINEABLE, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
+        super(attackDamageModifier, attackSpeedModifier, tier, BetterToolsTags.Blocks.PAXEL_MINEABLE, properties);
     }
 
     public PaxelItem(Tier tier, Properties properties) {
@@ -72,8 +72,7 @@ public class PaxelItem extends DiggerItem {
             level.setBlock(blockPos, optional4.get(), 11);
             level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, optional4.get()));
             if (player != null) {
-                EquipmentSlot equipmentSlot = itemStack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
-                itemStack.hurtAndBreak(1, player, equipmentSlot);
+                itemStack.hurtAndBreak(1, player, (player1) -> player1.broadcastBreakEvent(context.getHand()));
             }
 
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -102,8 +101,7 @@ public class PaxelItem extends DiggerItem {
                     level.setBlock(blockPos, blockState3, 11);
                     level.gameEvent(GameEvent.BLOCK_CHANGE, blockPos, GameEvent.Context.of(player, blockState3));
                     if (player != null) {
-                        EquipmentSlot equipmentSlot = itemStack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
-                        itemStack.hurtAndBreak(1, player, equipmentSlot);
+                        itemStack.hurtAndBreak(1, player, (player1) -> player1.broadcastBreakEvent(context.getHand()));
                     }
                 }
 
@@ -124,8 +122,8 @@ public class PaxelItem extends DiggerItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
 
         if (tooltipFlag.isAdvanced()) {
             tooltipComponents.add(CommonComponents.EMPTY);
