@@ -23,8 +23,8 @@ public class BetterToolsForge
     public static final String MOD_ID = "bettertools";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public BetterToolsForge() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public BetterToolsForge(FMLJavaModLoadingContext loadingContext) {
+        IEventBus modEventBus = loadingContext.getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
 
