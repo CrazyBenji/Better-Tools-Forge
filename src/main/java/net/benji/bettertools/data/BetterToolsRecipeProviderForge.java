@@ -1,6 +1,7 @@
 package net.benji.bettertools.data;
 
 import net.benji.bettertools.item.BetterToolsItems;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
@@ -8,9 +9,11 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.concurrent.CompletableFuture;
+
 public class BetterToolsRecipeProviderForge extends RecipeProvider implements IConditionBuilder {
-    public BetterToolsRecipeProviderForge(PackOutput output) {
-        super(output);
+    public BetterToolsRecipeProviderForge(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
     public void generatePaxelRecipe(RecipeOutput recipeOutput, Item pickaxe, Item axe, Item shovel, Item output) {

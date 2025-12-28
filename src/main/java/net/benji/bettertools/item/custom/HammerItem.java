@@ -20,9 +20,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class HammerItem extends PickaxeItem {
     public static final Component DESC = Component.translatable("desc.bettertools.hammer").withStyle(ChatFormatting.BLUE);
 
     public HammerItem(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
-        super(tier, attackDamageModifier, attackSpeedModifier, properties);
+        super(tier, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
     }
 
     public HammerItem(Tier tier, Properties properties) {
@@ -38,7 +36,7 @@ public class HammerItem extends PickaxeItem {
     }
 
     @Override
-    public boolean mineBlock(@Nonnull ItemStack stack, @NotNull Level level, @Nonnull BlockState state, @Nonnull BlockPos pos, @Nonnull LivingEntity player) {
+    public boolean mineBlock(@NotNull ItemStack stack, @NotNull Level level, @NotNull BlockState state, @NotNull BlockPos pos, @NotNull LivingEntity player) {
         if (level instanceof ServerLevel serverLevel) {
             BlockHitResult hitResult = serverLevel.clip(new ClipContext(player.getEyePosition(1F),
                     (player.getEyePosition(1f).add(player.getViewVector(1F).scale(6F))),
@@ -111,8 +109,8 @@ public class HammerItem extends PickaxeItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
         if (tooltipFlag.isAdvanced()) {
             tooltipComponents.add(CommonComponents.EMPTY);

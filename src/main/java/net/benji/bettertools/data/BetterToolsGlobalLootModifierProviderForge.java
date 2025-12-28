@@ -4,6 +4,7 @@ import net.benji.bettertools.BetterToolsForge;
 import net.benji.bettertools.data.loot.AddItemModifier;
 import net.benji.bettertools.item.BetterToolsItems;
 import net.minecraft.advancements.critereon.ItemPredicate;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -13,6 +14,7 @@ import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraftforge.common.data.GlobalLootModifierProvider;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public class BetterToolsGlobalLootModifierProviderForge extends GlobalLootModifierProvider {
 
@@ -53,8 +55,8 @@ public class BetterToolsGlobalLootModifierProviderForge extends GlobalLootModifi
             Blocks.PINK_STAINED_GLASS_PANE
     );
 
-    public BetterToolsGlobalLootModifierProviderForge(PackOutput output) {
-        super(output, BetterToolsForge.MOD_ID);
+    public BetterToolsGlobalLootModifierProviderForge(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, BetterToolsForge.MOD_ID, registries);
     }
 
     @Override

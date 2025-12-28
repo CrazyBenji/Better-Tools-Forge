@@ -5,7 +5,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.HoeItem;
 import net.minecraft.world.item.ItemStack;
@@ -17,7 +20,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.ToolActions;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class ScytheItem extends HoeItem {
     public static final Component DESC = Component.translatable("desc.bettertools.scythe").withStyle(ChatFormatting.BLUE);
 
     public ScytheItem(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
-        super(tier, attackDamageModifier, attackSpeedModifier, properties);
+        super(tier, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
     }
 
     public ScytheItem(Tier tier, Properties properties) {
@@ -43,37 +45,38 @@ public class ScytheItem extends HoeItem {
         Player player = useOnContext.getPlayer();
         ItemStack itemStack = useOnContext.getItemInHand();
 
-        if (!level.isClientSide) {
-            // Get all positions in 3x3 area around the clicked position
-            List<BlockPos> positionsToHoe = get3x3Positions(pos);
+        // Get all positions in 3x3 area around the clicked position
+        List<BlockPos> positionsToHoe = get3x3Positions(pos);
 
-            boolean anyBlockHoed = false;
+        boolean anyBlockHoed = false;
 
-            // Attempt to hoe each block in the area
-            for (BlockPos targetPos : positionsToHoe) {
-                UseOnContext context = new UseOnContext(level, player, useOnContext.getHand(), itemStack,
-                        new BlockHitResult(useOnContext.getClickLocation(), useOnContext.getClickedFace(), targetPos, useOnContext.isInside()));
-                BlockState toolModifiedState = level.getBlockState(targetPos).getToolModifiedState(context, ToolActions.HOE_TILL, false);
-                Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of((Predicate<UseOnContext>)(ctx) -> true, changeIntoState(toolModifiedState));
-                if (pair != null) {
-                    Predicate<UseOnContext> predicate = pair.getFirst();
-                    Consumer<UseOnContext> consumer = pair.getSecond();
-                    if (predicate.test(context)) {
-                        if (!level.isClientSide()) {
-                            consumer.accept(context);
-                        }
-
-                        anyBlockHoed = true;
+        // Attempt to hoe each block in the area
+        for (BlockPos targetPos : positionsToHoe) {
+            UseOnContext context = new UseOnContext(level, player, useOnContext.getHand(), itemStack,
+                    new BlockHitResult(useOnContext.getClickLocation(), useOnContext.getClickedFace(), targetPos, useOnContext.isInside()));
+            BlockState toolModifiedState = level.getBlockState(targetPos).getToolModifiedState(context, ToolActions.HOE_TILL, false);
+            Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of((Predicate<UseOnContext>)(ctx) -> true, changeIntoState(toolModifiedState));
+            if (pair != null) {
+                Predicate<UseOnContext> predicate = pair.getFirst();
+                Consumer<UseOnContext> consumer = pair.getSecond();
+                if (predicate.test(context)) {
+                    if (!level.isClientSide()) {
+                        consumer.accept(context);
                     }
+
+                    anyBlockHoed = true;
                 }
             }
+        }
 
-            if (anyBlockHoed) {
-                // Damage the tool once for the original block
-                assert player != null;
-                itemStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(useOnContext.getHand()));
-                return InteractionResult.SUCCESS;
+        if (anyBlockHoed) {
+            // Damage the tool once for the original block
+            if (player != null) {
+                EquipmentSlot equipmentSlot = itemStack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
+                itemStack.hurtAndBreak(1, player, equipmentSlot);
+                level.playSound(player, pos, SoundEvents.HOE_TILL, SoundSource.BLOCKS, 1.0F, 1.0F);
             }
+            return InteractionResult.SUCCESS;
         }
 
         // Fall back to default hoe behavior if no custom hoeing happened
@@ -94,8 +97,8 @@ public class ScytheItem extends HoeItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
         if (tooltipFlag.isAdvanced()) {
             tooltipComponents.add(CommonComponents.EMPTY);

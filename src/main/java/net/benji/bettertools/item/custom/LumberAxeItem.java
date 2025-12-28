@@ -6,6 +6,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +15,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,7 +28,7 @@ public class LumberAxeItem extends AxeItem {
     private static final Component DESC = Component.translatable("desc.bettertools.lumber_axe").withStyle(ChatFormatting.BLUE);
 
     public LumberAxeItem(Tier tier, float attackDamageModifier, float attackSpeedModifier, Properties properties, int maxLogs) {
-        super(tier, attackDamageModifier, attackSpeedModifier, properties);
+        super(tier, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
         this.maxLogs = maxLogs;
         this.toBreak = new HashSet<>();
     }
@@ -45,7 +45,8 @@ public class LumberAxeItem extends AxeItem {
             breakConnectedLogs(server, pos);
             for (BlockPos breakPos : toBreak) {
                 level.destroyBlock(breakPos, true);
-                stack.hurtAndBreak(1, player, (player1) -> player1.broadcastBreakEvent(player.getUsedItemHand()));
+                EquipmentSlot equipmentSlot = stack.equals(player.getItemBySlot(EquipmentSlot.OFFHAND)) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
+                stack.hurtAndBreak(1, player, equipmentSlot);
             }
             this.toBreak.clear();
         }
@@ -92,8 +93,8 @@ public class LumberAxeItem extends AxeItem {
     }
 
     @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level level, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, level, tooltipComponents, tooltipFlag);
+    public void appendHoverText(@NotNull ItemStack stack, @NotNull TooltipContext context, @NotNull List<Component> tooltipComponents, @NotNull TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
 
         if (tooltipFlag.isAdvanced()) {
             tooltipComponents.add(CommonComponents.EMPTY);
