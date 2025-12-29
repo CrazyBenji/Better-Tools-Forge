@@ -29,12 +29,12 @@ import java.util.Optional;
 public class PaxelItem extends DiggerItem {
     public static final Component DESC = Component.translatable("desc.bettertools.paxel").withStyle(ChatFormatting.BLUE);
 
-    public PaxelItem(Tier tier, float attackDamageModifier, float attackSpeedModifier, Properties properties) {
-        super(tier, BetterToolsTags.Blocks.PAXEL_MINEABLE, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
+    public PaxelItem(ToolMaterial toolMaterial, float attackDamageModifier, float attackSpeedModifier, Properties properties) {
+        super(toolMaterial, BetterToolsTags.Blocks.PAXEL_MINEABLE, attackDamageModifier, attackSpeedModifier, properties);
     }
 
-    public PaxelItem(Tier tier, Properties properties) {
-        this(tier, 2.0f, -2.8f, properties);
+    public PaxelItem(ToolMaterial toolMaterial, Properties properties) {
+        this(toolMaterial, 2.0f, -2.8f, properties);
     }
 
     @Override
@@ -76,7 +76,7 @@ public class PaxelItem extends DiggerItem {
                 itemStack.hurtAndBreak(1, player, equipmentSlot);
             }
 
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
 
         // Shovel Logic
@@ -107,7 +107,7 @@ public class PaxelItem extends DiggerItem {
                     }
                 }
 
-                return InteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.SUCCESS;
             } else {
                 return InteractionResult.PASS;
             }

@@ -6,7 +6,7 @@ import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,12 +15,12 @@ import java.util.List;
 public class GlassChipperItem extends DiggerItem {
     public static final Component DESC = Component.translatable("desc.bettertools.glass_chipper").withStyle(ChatFormatting.BLUE);
 
-    public GlassChipperItem(Tier tier, float attackDamageModifier, float attackSpeedModifier, Properties properties) {
-        super(tier, BetterToolsTags.Blocks.GLASS_CHIPPER_MINEABLE, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
+    public GlassChipperItem(ToolMaterial toolMaterial, float attackDamageModifier, float attackSpeedModifier, Properties properties) {
+        super(toolMaterial, BetterToolsTags.Blocks.GLASS_CHIPPER_MINEABLE, attackDamageModifier, attackSpeedModifier, properties);
     }
 
-    public GlassChipperItem(Tier tier, Properties properties) {
-        this(tier, 0, -3.2f, properties);
+    public GlassChipperItem(ToolMaterial toolMaterial, Properties properties) {
+        this(toolMaterial, 0, -3.2f, properties);
     }
 
     @Override

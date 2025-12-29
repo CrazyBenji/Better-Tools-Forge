@@ -5,6 +5,7 @@ import net.benji.bettertools.data.loot.AddItemModifier;
 import net.benji.bettertools.item.BetterToolsItems;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -63,18 +64,18 @@ public class BetterToolsGlobalLootModifierProviderForge extends GlobalLootModifi
     @Override
     protected void start(HolderLookup.@NotNull Provider provider) {
         for (Block b : GLASS_BLOCKS) {
-            this.addGlassChipperDrop(b);
+            this.addGlassChipperDrop(b, provider);
         }
-        this.addGlassChipperDrop(Blocks.GLOWSTONE);
-        this.addGlassChipperDrop(Blocks.SEA_LANTERN);
+        this.addGlassChipperDrop(Blocks.GLOWSTONE, provider);
+        this.addGlassChipperDrop(Blocks.SEA_LANTERN, provider);
     }
 
-    public void addGlassChipperDrop(Block block) {
+    public void addGlassChipperDrop(Block block, HolderLookup.Provider registries) {
         this.add(block.getDescriptionId().substring(16) + "_from_glass_chipper",
                 new AddItemModifier(
                         new LootItemCondition[]{
                                 LootItemBlockStatePropertyCondition.hasBlockStateProperties(block).build(),
-                                MatchTool.toolMatches(ItemPredicate.Builder.item().of(BetterToolsItems.GLASS_CHIPPER.get())).build()
+                                MatchTool.toolMatches(ItemPredicate.Builder.item().of(registries.lookupOrThrow(Registries.ITEM), BetterToolsItems.GLASS_CHIPPER.get())).build()
                         },
                         block.asItem()
                 ));

@@ -3,7 +3,6 @@ package net.benji.bettertools;
 import com.mojang.logging.LogUtils;
 import net.benji.bettertools.block.BetterToolsBlocks;
 import net.benji.bettertools.data.loot.BetterToolsLootModifiers;
-import net.benji.bettertools.enchantment.BetterToolsEnchantments;
 import net.benji.bettertools.item.BetterToolsCreativeModeTabs;
 import net.benji.bettertools.item.BetterToolsItems;
 import net.minecraftforge.api.distmarker.Dist;

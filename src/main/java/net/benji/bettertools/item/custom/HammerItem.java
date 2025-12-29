@@ -9,7 +9,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.ToolMaterial;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
@@ -27,12 +27,12 @@ import java.util.List;
 public class HammerItem extends PickaxeItem {
     public static final Component DESC = Component.translatable("desc.bettertools.hammer").withStyle(ChatFormatting.BLUE);
 
-    public HammerItem(Tier tier, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
-        super(tier, properties.attributes(createAttributes(tier, attackDamageModifier, attackSpeedModifier)));
+    public HammerItem(ToolMaterial toolMaterial, int attackDamageModifier, float attackSpeedModifier, Properties properties) {
+        super(toolMaterial, attackDamageModifier, attackSpeedModifier, properties);
     }
 
-    public HammerItem(Tier tier, Properties properties) {
-        this(tier, 1, -2.8f, properties);
+    public HammerItem(ToolMaterial toolMaterial, Properties properties) {
+        this(toolMaterial, 1, -2.8f, properties);
     }
 
     @Override

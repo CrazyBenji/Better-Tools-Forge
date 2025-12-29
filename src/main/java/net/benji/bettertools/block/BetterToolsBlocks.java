@@ -2,6 +2,9 @@ package net.benji.bettertools.block;
 
 import net.benji.bettertools.BetterToolsForge;
 import net.benji.bettertools.item.BetterToolsItems;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -12,25 +15,32 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 public class BetterToolsBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BetterToolsForge.MOD_ID);
 
     public static final RegistryObject<Block> SMASHED_BEDROCK = registerBlock("smashed_bedrock",
-            () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN)));
+            Block::new,
+            BlockBehaviour.Properties.ofFullCopy(Blocks.OBSIDIAN));
 
-    public static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
-        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function, BlockBehaviour.Properties properties) {
+        RegistryObject<T> toReturn = BLOCKS.register(name,
+                () -> function.apply(properties.setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(BetterToolsForge.MOD_ID, name)))));
         registerBlockItem(name, toReturn);
         return toReturn;
     }
 
-    public static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
-        BetterToolsItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Function<BlockBehaviour.Properties, T> function) {
+        return registerBlock(name, function, BlockBehaviour.Properties.of());
     }
 
-    public static void registerBlocks(IEventBus eventBus) {
-        BLOCKS.register(eventBus);
+    private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
+        BetterToolsItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()
+                .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(BetterToolsForge.MOD_ID, name))).useBlockDescriptionPrefix()));
+    }
+
+    public static void registerBlocks(IEventBus modEventBus) {
+        BLOCKS.register(modEventBus);
     }
 }
