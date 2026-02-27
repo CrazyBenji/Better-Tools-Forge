@@ -1,7 +1,7 @@
 package net.benji.bettertools.data;
 
+import net.benji.bettertools.data.recipes.PaxelRecipeBuilder;
 import net.benji.bettertools.item.BetterToolsItems;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Item;
@@ -9,7 +9,6 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
 public class BetterToolsRecipeProviderForge extends RecipeProvider implements IConditionBuilder {
@@ -18,14 +17,7 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
     }
 
     public void generatePaxelRecipe(Consumer<FinishedRecipe> recipeOutput, Item pickaxe, Item axe, Item shovel, Item output) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1)
-                .pattern("abc")
-                .pattern(" s ")
-                .pattern(" s ")
-                .define('a', pickaxe)
-                .define('b', axe)
-                .define('c', shovel)
-                .define('s', Items.STICK)
+        PaxelRecipeBuilder.paxel(pickaxe, axe, shovel, output)
                 .unlockedBy(getHasName(pickaxe), has(pickaxe))
                 .save(recipeOutput);
     }
@@ -65,6 +57,17 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
                 .save(recipeOutput);
     }
 
+    public void generateMacheteRecipe(Consumer<FinishedRecipe> writer, Item ingot, Item output) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, output, 1)
+                .pattern("  i")
+                .pattern(" i ")
+                .pattern("s  ")
+                .define('i', ingot)
+                .define('s', Items.STICK)
+                .unlockedBy(getHasName(ingot), has(ingot))
+                .save(writer);
+    }
+
     @Override
     public void buildRecipes(@NotNull Consumer<FinishedRecipe> recipeOutput) {
         generateHammerRecipe(recipeOutput, Items.IRON_INGOT, Items.IRON_BLOCK, BetterToolsItems.IRON_HAMMER.get());
@@ -81,11 +84,6 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
         generatePaxelRecipe(recipeOutput, Items.GOLDEN_PICKAXE, Items.GOLDEN_AXE, Items.GOLDEN_SHOVEL, BetterToolsItems.GOLDEN_PAXEL.get());
         generatePaxelRecipe(recipeOutput, Items.DIAMOND_PICKAXE, Items.DIAMOND_AXE, Items.DIAMOND_SHOVEL, BetterToolsItems.DIAMOND_PAXEL.get());
         netheriteSmithing(recipeOutput, BetterToolsItems.DIAMOND_PAXEL.get(), RecipeCategory.TOOLS, BetterToolsItems.NETHERITE_PAXEL.get());
-
-        generateLumberAxeRecipe(recipeOutput, Items.IRON_INGOT, Items.IRON_BLOCK, BetterToolsItems.IRON_LUMBER_AXE.get());
-        generateLumberAxeRecipe(recipeOutput, Items.GOLD_INGOT, Items.GOLD_BLOCK, BetterToolsItems.GOLDEN_LUMBER_AXE.get());
-        generateLumberAxeRecipe(recipeOutput, Items.DIAMOND, Items.DIAMOND_BLOCK, BetterToolsItems.DIAMOND_LUMBER_AXE.get());
-        netheriteSmithing(recipeOutput, BetterToolsItems.DIAMOND_LUMBER_AXE.get(), RecipeCategory.TOOLS, BetterToolsItems.NETHERITE_LUMBER_AXE.get());
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, BetterToolsItems.GLASS_CHIPPER.get(), 1)
                 .pattern(" i")
@@ -104,5 +102,15 @@ public class BetterToolsRecipeProviderForge extends RecipeProvider implements IC
                 .define('s', Items.STICK)
                 .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
                 .save(recipeOutput);
+
+        generateLumberAxeRecipe(recipeOutput, Items.IRON_INGOT, Items.IRON_BLOCK, BetterToolsItems.IRON_LUMBER_AXE.get());
+        generateLumberAxeRecipe(recipeOutput, Items.GOLD_INGOT, Items.GOLD_BLOCK, BetterToolsItems.GOLDEN_LUMBER_AXE.get());
+        generateLumberAxeRecipe(recipeOutput, Items.DIAMOND, Items.DIAMOND_BLOCK, BetterToolsItems.DIAMOND_LUMBER_AXE.get());
+        netheriteSmithing(recipeOutput, BetterToolsItems.DIAMOND_LUMBER_AXE.get(), RecipeCategory.TOOLS, BetterToolsItems.NETHERITE_LUMBER_AXE.get());
+
+        generateMacheteRecipe(recipeOutput, Items.IRON_INGOT, BetterToolsItems.IRON_MACHETE.get());
+        generateMacheteRecipe(recipeOutput, Items.GOLD_INGOT, BetterToolsItems.GOLDEN_MACHETE.get());
+        generateMacheteRecipe(recipeOutput, Items.DIAMOND, BetterToolsItems.DIAMOND_MACHETE.get());
+        netheriteSmithing(recipeOutput, BetterToolsItems.DIAMOND_MACHETE.get(), RecipeCategory.TOOLS, BetterToolsItems.NETHERITE_MACHETE.get());
     }
 }

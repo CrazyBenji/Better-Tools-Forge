@@ -47,5 +47,11 @@ public class BetterToolsItemTagProviderForge extends ItemTagsProvider {
                 .add(BetterToolsItems.GOLDEN_LUMBER_AXE.get())
                 .add(BetterToolsItems.DIAMOND_LUMBER_AXE.get())
                 .add(BetterToolsItems.NETHERITE_LUMBER_AXE.get());
+
+        this.tag(BetterToolsTags.Items.MACHETES)
+                .add(BetterToolsItems.IRON_MACHETE.get())
+                .add(BetterToolsItems.GOLDEN_MACHETE.get())
+                .add(BetterToolsItems.DIAMOND_MACHETE.get())
+                .add(BetterToolsItems.NETHERITE_MACHETE.get());
     }
 }

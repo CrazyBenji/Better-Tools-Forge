@@ -6,6 +6,7 @@ import net.benji.bettertools.data.loot.BetterToolsLootModifiers;
 import net.benji.bettertools.enchantment.BetterToolsEnchantments;
 import net.benji.bettertools.item.BetterToolsCreativeModeTabs;
 import net.benji.bettertools.item.BetterToolsItems;
+import net.benji.bettertools.item.crafting.BetterToolsRecipeSerializers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -33,6 +34,7 @@ public class BetterToolsForge
         BetterToolsCreativeModeTabs.registerCreativeModeTabs(modEventBus);
         BetterToolsEnchantments.registerEnchantment(modEventBus);
         BetterToolsLootModifiers.registerLootModifiers(modEventBus);
+        BetterToolsRecipeSerializers.registerRecipeSerializers(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
     }

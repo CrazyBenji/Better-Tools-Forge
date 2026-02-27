@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:story/iron_tools",
   "criteria": {
-    "got_paxel": {
+    "got_machete": {
       "conditions": {
         "items": [
           {
-            "tag": "bettertools:paxels"
+            "tag": "bettertools:machetes"
           }
         ]
       },
@@ -15,22 +15,22 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.story.get_paxel.description"
+      "translate": "advancements.story.get_machete.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "bettertools:iron_paxel",
+      "item": "bettertools:iron_machete",
       "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.story.get_paxel.title"
+      "translate": "advancements.story.get_machete.title"
     }
   },
   "requirements": [
     [
-      "got_paxel"
+      "got_machete"
     ]
   ],
   "sends_telemetry_event": true

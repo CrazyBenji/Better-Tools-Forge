@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "i": {
+      "item": "minecraft:diamond"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  i",
+    " i ",
+    "s  "
+  ],
+  "result": {
+    "item": "bettertools:diamond_machete"
+  },
+  "show_notification": true
+}

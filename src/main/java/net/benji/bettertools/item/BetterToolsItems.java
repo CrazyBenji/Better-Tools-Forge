@@ -51,6 +51,15 @@ public class BetterToolsItems {
     public static final RegistryObject<Item> NETHERITE_LUMBER_AXE = ITEMS.register("netherite_lumber_axe",
             () -> new LumberAxeItem(Tiers.NETHERITE, new Item.Properties(), 128));
 
+    public static final RegistryObject<Item> IRON_MACHETE = ITEMS.register("iron_machete",
+            () -> new MacheteItem(Tiers.IRON, new Item.Properties(), 16));
+    public static final RegistryObject<Item> GOLDEN_MACHETE = ITEMS.register("golden_machete",
+            () -> new MacheteItem(Tiers.GOLD, new Item.Properties(), 32));
+    public static final RegistryObject<Item> DIAMOND_MACHETE = ITEMS.register("diamond_machete",
+            () -> new MacheteItem(Tiers.DIAMOND, new Item.Properties(), 48));
+    public static final RegistryObject<Item> NETHERITE_MACHETE = ITEMS.register("netherite_machete",
+            () -> new MacheteItem(Tiers.NETHERITE, new Item.Properties(), 64));
+
     public static final RegistryObject<Item> GLASS_CHIPPER = ITEMS.register("glass_chipper",
             () -> new GlassChipperItem(Tiers.IRON, new Item.Properties()));
 
