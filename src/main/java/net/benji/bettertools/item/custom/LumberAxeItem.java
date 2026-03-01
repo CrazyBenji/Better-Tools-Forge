@@ -30,7 +30,7 @@ public class LumberAxeItem extends AxeItem {
 
     public LumberAxeItem(Tier tier, float attackDamageModifier, float attackSpeedModifier, Properties properties, int maxLogs) {
         super(tier, attackDamageModifier, attackSpeedModifier, properties);
-        this.maxLogs = maxLogs;
+        this.maxLogs = maxLogs - 1;
         this.toBreak = new HashSet<>();
     }
 
@@ -51,16 +51,19 @@ public class LumberAxeItem extends AxeItem {
             this.toBreak.clear();
         }
 
-        return true;
+        return super.mineBlock(stack, level, state, pos, player);
     }
 
     private void breakConnectedLogs(ServerLevel level, BlockPos startPos) {
-        if (this.toBreak.size() >= maxLogs) {
+        if (this.toBreak.size() >= this.maxLogs) {
             return;
         }
         ArrayList<BlockPos> toCheck = populateArrayList(startPos);
 
         for (BlockPos pos : toCheck) {
+            if (this.toBreak.size() >= this.maxLogs) {
+                return;
+            }
             if (!this.toBreak.contains(pos) && level.getBlockState(pos).is(BlockTags.LOGS)) {
                 this.toBreak.add(pos);
                 this.breakConnectedLogs(level, pos);
