@@ -43,10 +43,10 @@ public class BetterToolsModelProviderForge extends ItemModelProvider {
         generateFlatItem(BetterToolsItems.DIAMOND_LUMBER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
         generateFlatItem(BetterToolsItems.NETHERITE_LUMBER_AXE, ModelTemplates.FLAT_HANDHELD_ITEM);
 
-        //generateFlatItem(BetterToolsItems.IRON_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        //generateFlatItem(BetterToolsItems.GOLDEN_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        //generateFlatItem(BetterToolsItems.DIAMOND_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
-        //generateFlatItem(BetterToolsItems.NETHERITE_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        generateFlatItem(BetterToolsItems.IRON_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        generateFlatItem(BetterToolsItems.GOLDEN_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        generateFlatItem(BetterToolsItems.DIAMOND_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
+        generateFlatItem(BetterToolsItems.NETHERITE_MACHETE, ModelTemplates.FLAT_HANDHELD_ITEM);
     }
 
     public void generateFlatItem(RegistryObject<Item> item, ModelTemplate modelTemplate) {

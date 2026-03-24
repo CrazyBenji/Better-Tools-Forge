@@ -68,11 +68,11 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .save(consumer, BetterToolsForge.MOD_ID + ":story/get_paxel");
 
             Advancement getScythe = Advancement.Builder.advancement()
-                    .parent(getAdvancement("story/iron_tools"))
+                    .parent(getAdvancement("husbandry/plant_seed"))
                     .display(
                             BetterToolsItems.IRON_SCYTHE.get(),
-                            Component.translatable("advancements.story.get_scythe.title"),
-                            Component.translatable("advancements.story.get_scythe.description"),
+                            Component.translatable("advancements.husbandry.get_scythe.title"),
+                            Component.translatable("advancements.husbandry.get_scythe.description"),
                             null,
                             FrameType.TASK,
                             true,
@@ -82,10 +82,10 @@ public class BetterToolsAdvancementProviderForge extends ForgeAdvancementProvide
                     .addCriterion("got_scythe", InventoryChangeTrigger.TriggerInstance.hasItems(
                             ItemPredicate.Builder.item().of(BetterToolsTags.Items.SCYTHES).build()
                     ))
-                    .save(consumer, BetterToolsForge.MOD_ID + ":story/get_scythe");
+                    .save(consumer, BetterToolsForge.MOD_ID + ":husbandry/get_scythe");
 
             Advancement getNetheriteScythe = Advancement.Builder.advancement()
-                    .parent(getAdvancement("husbandry/obtain_netherite_hoe"))
+                    .parent(getScythe)
                     .display(
                             BetterToolsItems.NETHERITE_SCYTHE.get(),
                             Component.translatable("advancements.husbandry.get_netherite_scythe.title"),

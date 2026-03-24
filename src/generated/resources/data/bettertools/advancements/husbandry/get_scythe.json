@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:story/iron_tools",
+  "parent": "minecraft:husbandry/plant_seed",
   "criteria": {
     "got_scythe": {
       "conditions": {
@@ -15,7 +15,7 @@
   "display": {
     "announce_to_chat": true,
     "description": {
-      "translate": "advancements.story.get_scythe.description"
+      "translate": "advancements.husbandry.get_scythe.description"
     },
     "frame": "task",
     "hidden": false,
@@ -25,7 +25,7 @@
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.story.get_scythe.title"
+      "translate": "advancements.husbandry.get_scythe.title"
     }
   },
   "requirements": [
