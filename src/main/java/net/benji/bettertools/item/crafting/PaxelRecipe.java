@@ -61,24 +61,34 @@ public class PaxelRecipe extends CustomRecipe {
     }
 
     private Map<Enchantment, Integer> combineEnchantments(CraftingContainer container) {
-        Map<Enchantment, Integer> combined = EnchantmentHelper.deserializeEnchantments(container.getItem(0).getEnchantmentTags());
+        Map<Enchantment, Integer> combined = this.pickaxe.test(container.getItem(0))
+                ? EnchantmentHelper.deserializeEnchantments(container.getItem(0).getEnchantmentTags())
+                : EnchantmentHelper.deserializeEnchantments(container.getItem(2).getEnchantmentTags());
+
         List<Map<Enchantment, Integer>> mapsToCombine = List.of(
                 EnchantmentHelper.deserializeEnchantments(container.getItem(1).getEnchantmentTags()),
-                EnchantmentHelper.deserializeEnchantments(container.getItem(2).getEnchantmentTags())
+                this.pickaxe.test(container.getItem(0))
+                        ? EnchantmentHelper.deserializeEnchantments(container.getItem(2).getEnchantmentTags())
+                        : EnchantmentHelper.deserializeEnchantments(container.getItem(0).getEnchantmentTags())
         );
 
         for (Map<Enchantment, Integer> enchantmentMap : mapsToCombine) {
             for (Map.Entry<Enchantment, Integer> mapEntry : enchantmentMap.entrySet()) {
-                Enchantment enchantment = mapEntry.getKey();
+                Enchantment enchantmentToAdd = mapEntry.getKey();
                 Integer level = mapEntry.getValue();
-                if (!combined.containsKey(enchantment)) {
-                    combined.put(enchantment, level);
-                }
-                else {
-                    if (combined.get(enchantment) < level) {
-                        combined.remove(enchantment);
-                        combined.put(enchantment, level);
+                boolean compatible = true;
+                for (Enchantment enchantment : combined.keySet()) {
+                    if (enchantment != enchantmentToAdd && !enchantmentToAdd.isCompatibleWith(enchantment)) {
+                        compatible = false;
                     }
+                }
+
+                if (compatible && !combined.containsKey(enchantmentToAdd)) {
+                    combined.put(enchantmentToAdd, level);
+                }
+                else if (compatible && combined.get(enchantmentToAdd) < level){
+                    combined.remove(enchantmentToAdd);
+                    combined.put(enchantmentToAdd, level);
                 }
             }
         }
